@@ -25,10 +25,6 @@ const RoomAllocation = ({ guest, room, onChange }) => {
     );
   };
 
-  useEffect(() => {
-    onChange(allocation);
-  }, [numberOfNotAllocated()]);
-
   const customInputMax = (type, idx) => {
     if (type === CustomInputType.adult) {
       return Min(
@@ -42,6 +38,10 @@ const RoomAllocation = ({ guest, room, onChange }) => {
       );
     }
   };
+
+  useEffect(() => {
+    onChange(allocation);
+  }, [numberOfNotAllocated()]);
 
   return (
     <div className="flex flex-col p-4 border border-dashed w-full text-gray-700">
@@ -110,11 +110,7 @@ const RoomAllocation = ({ guest, room, onChange }) => {
               onChange={(event) => {
                 const value = event.target.value;
                 const name = event.target.name;
-                console.log(
-                  "CustomInputNumberonChangeEvent",
-                  event.target.name,
-                  event.target.value
-                );
+                console.log("CustomInputNumberonChangeEvent", value, name);
                 if (
                   value === "" ||
                   value === "-" ||
